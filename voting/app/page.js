@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { Button } from 'flowbite-react';
-import Login from './pages/login';
+import Login from './login/page'
 
 export default function Home() {
   const [interfaceType, setInterfaceType] = useState(null);
@@ -20,15 +20,15 @@ export default function Home() {
       )}
       {interfaceType === 'admin' && (
         <div>
-
-          <Login />
+          <Login role="Admin" color="bg-pink-400" />
         </div >
-      )}
+      )
+      }
       {
         interfaceType === 'user' && (
           <div>
 
-            <p>This is the user interface</p>
+            <Login role="user" color="bg-blue-400" />
           </div>
         )
       }
