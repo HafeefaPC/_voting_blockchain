@@ -51,22 +51,16 @@ const Login = (props) => {
             id="username"
             type="text"
             placeholder="Username"
-            className='w-[35rem] h-10 text-black rounded-none'
+            className='w-[35rem] h-10 text-black rounded-lg'
             required
           />
         </div>
         <div>
-          <div className="">
-            <Label htmlFor="password1" value="Your password" />
-          </div>
-          <input id="password1" type="password" placeholder="password" className='w-[35rem] h-10 text-black ' required />
+          
         </div>
-        <div className="flex items-center gap-2">
-          <Checkbox id="remember" />
-          <Label htmlFor="remember">Remember me</Label>   
-        </div>
-        <Button type="submit" className='border-2 border-white ' onClick={requestAccount}>Connect To Metamask</Button>
         <h3>Wallet address : {walletAddress}</h3>
+        <Button type="submit" className='border-2 border-white ' onClick={requestAccount}>Connect To Metamask</Button>
+        
       </form>     
     </div>
   );
