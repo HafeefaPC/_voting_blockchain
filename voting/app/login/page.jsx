@@ -1,8 +1,43 @@
 import React from 'react';
 import { Label, Checkbox, Button } from 'flowbite-react';
+import { useState } from 'react';
+import { ethers } from 'ethers';
 
 
 const Login = (props) => {
+  const [walletAddress, setWalletAddress] = useState("");
+
+
+  async function requestAccount() {
+    console.log('Requesting account...');
+
+  
+    if(window.ethereum) {
+      console.log('detected');
+
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        setWalletAddress(accounts[0]);
+      } catch (error) {
+        console.log('Error connecting...');
+      }
+
+    } else {
+      alert('Meta Mask not detected');
+    }
+  }
+
+
+  async function connectWallet() {
+    if(typeof window.ethereum !== 'undefined') {
+      await requestAccount();
+
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+    }
+  }
+
    
   return (
     <div>
@@ -24,13 +59,14 @@ const Login = (props) => {
           <div className="">
             <Label htmlFor="password1" value="Your password" />
           </div>
-          <input id="password1" type="password" placeholder="password" className='w-[35rem] h-10' required />
+          <input id="password1" type="password" placeholder="password" className='w-[35rem] h-10 text-black ' required />
         </div>
         <div className="flex items-center gap-2">
           <Checkbox id="remember" />
           <Label htmlFor="remember">Remember me</Label>   
         </div>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className='border-2 border-white ' onClick={requestAccount}>Connect To Metamask</Button>
+        <h3>Wallet address : {walletAddress}</h3>
       </form>     
     </div>
   );
