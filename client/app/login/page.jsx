@@ -59,8 +59,8 @@ const Login = (props) => {
           
         </div>
         <h3>Wallet address : {walletAddress}</h3>
-        <Button type="submit" className='border-2 border-white ' onClick={requestAccount}>Connect To Metamask</Button>
-        
+        <Button  className='border-2 border-white ' onClick={requestAccount}>Connect To Metamask</Button>
+        <Button type='submit' className='border-2 border-white'>Login</Button>
       </form>     
     </div>
   );
